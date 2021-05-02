@@ -1,0 +1,25 @@
+{% extends 'customer/base.html' %}
+
+{% block content %}
+<nav class="fixed-top">
+      <div class="logo"><i class="fas fa-utensils"></i> <i class="fas fa-pizza-slice"></i></div>
+      <input type="checkbox" id="click">
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a class="active" href="/about">About</a></li>
+        <li><a href="{% url 'order' %}">Order</a></li>
+        <li><a href="https://tarce09.github.io/portfolio/">contact</a></li>
+      </ul>
+    </nav>
+<div class="big-image">
+  <div class="overlay">
+    <div class="container">
+    <h1><span id="title">About us</span></h1>
+    <p>ZAYKEDAAR is a hotel demo ordering service website created by T ARYAN RAJU which has facilities like ordering food items, demo stripe payment, staff controll webpages and amazing UI. It is made using the traditional front end technologies, django and sqlite3 database. If u want to contact the developer for queries you can go to the contact link in the navbar.</p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,68 @@
+{% extends 'customer/base.html' %}
+
+{% block content %}
+<section class="confirm">
+<nav class="fixed-top">
+      <div class="logo"><i class="fas fa-utensils"></i> <i class="fas fa-pizza-slice"></i></div>
+      <input type="checkbox" id="click">
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="{% url 'order' %}" class="active">Order</a></li>
+        <li><a href="https://tarce09.github.io/portfolio/">contact</a></li>
+      </ul>
+    </nav>
+<div class="big-image2 fixed">
+</div>
+<div class="Bill">
+    <h3>ORDER SUMMARY</h3><br>
+    <p>We are very happy to see that you have choosen zaykedaar for your food delivery service .
+    Enjoy your delicious meal and have an awsome day</p><br>
+    <hr /><br>
+    <div class="font">
+    <div class="row">
+      <div class="col-md-6 col-xs-6 col-sm-9 first">
+        ITEMS
+        </div>
+        <div class="col-md-6 col-xs-6 col-sm-3 second">
+        COST
+        </div>
+        </div><br>
+      {% for item in items %}
+      <div class="row">
+      <div class="col-md-6 col-xs-6 col-sm-9 first">
+        {{item.name}}
+        </div>
+        <div class="col-md-6 col-xs-6 col-sm-3 second">
+        Rs {{item.price}}
+        </div>
+        </div>
+      {% endfor %}<br>
+      <hr />
+      <br>
+      <div class="row">
+      <div class="col-md-6 col-xs-6 col-sm-9 first">
+        Grand Total -
+        </div>
+        <div class="col-md-6 col-xs-6 col-sm-3 second">
+        Rs {{price}}
+        </div>
+        </div>
+        </div>
+        <br><br>
+        <script src="https://checkout.stripe.com/checkout.js"
+          class="stripe-button"          
+          data-key="{{key}}"          
+          data-description="Payment Gateway"
+          data-locale="auto">
+     </script>
+  </div>
+
+</section>
+
+
+
+{% endblock content %}

@@ -1,0 +1,246 @@
+{% extends 'customer/base.html' %}
+
+{% block content %}
+<a name="top"></a>
+<section class="order-menu">
+<div class="big-image2 fixed">
+</div>
+<nav class="fixed-top">
+      <div class="logo"><i class="fas fa-utensils"></i> <i class="fas fa-pizza-slice"></i></div>
+      <input type="checkbox" id="click">
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a class="active" href="{%url 'order' %}">Order</a></li>
+        <li><a href="https://tarce09.github.io/portfolio/">contact</a></li>
+      </ul>
+    </nav>
+    <div class="container main-content">
+    <div class="order-title">MENU</div>
+    <div class="text-order">ORDER FROM THE FOLLOWING CATEGORIES</div>
+    <div class="second-nav">
+    <a class="divisions" href="#appetizers">APPETIZERS</a>
+    <a class="divisions" href="#main">MAIN</a>
+    <a class="divisions" href="#deserts">DESERTS</a>
+    <a class="divisions" href="#drinks">DRINKS</a>
+    </div><br>
+    <hr /><br>
+    <div class="side-nav">
+    <a href="#top" class="divisions"><span class="bar"></span><i class="fas fa-book-open font"></i><span class="tip">PAGETOP</span></a><br>
+    <a href="#pay" class="divisions"><span class="bar"></span><i class="fas fa-rupee-sign font"></i><span class="tip">PAYMENT</span></a>
+    </div>
+    <a href="#pay" class="paymentlink"><span class="tip">PAYMENT</span></a>
+    <form method="POST">
+        {% csrf_token %}
+        <a name="appetizers"></a>
+        <div class="text-order">-- Appetizers --</div>
+        {% for app in appetizers%}
+          <div class="flex items-center food-box justify-center">
+    <div class="max-w-md md:max-w-2xl px-2 SIZE">
+      <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
+        
+        <img class="bg-cover bg-bottom h-56 md:h-auto md:w-56 order-img" src="{{app.image.url}}" >
+        <div>
+          <div class="p-4 md:p-5">
+            <p class="font-bold text-xl md:text-2xl">{{app.name}}</p>
+            <p class="text-gray-700 md:text-lg">{{app.description}}</p>
+          </div>
+          <div class="p-4 md:p-5 bg-gray-0">
+            <div class="sm:flex sm:justify-between sm:items-center">
+              <div>
+                <div class="text-lg text-gray-700">
+                <span class="text-gray-900 font-bold">Rs {{app.price}}</span> per Plate</div>
+                <input type="checkbox" name="items[]" class="form-check-input" value="{{app.pk}}">
+                <label class="text-gray-600 font-bold order-label">Order</label>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+        {% endfor %}
+        <a name="main"></a>
+        <div class="text-order">-- Main Course --</div>
+            {% for mains in main %}
+ <div class="flex items-center food-box justify-center">
+    <div class="max-w-md md:max-w-2xl px-2 SIZE">
+      <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
+        
+        <img class="bg-cover bg-bottom h-56 md:h-auto md:w-56 order-img" src="{{mains.image.url}}" >
+        <div>
+          <div class="p-4 md:p-5">
+            <p class="font-bold text-xl md:text-2xl">{{mains.name}}</p>
+            <p class="text-gray-700 md:text-lg">{{mains.description}}</p>
+          </div>
+          <div class="p-4 md:p-5 bg-gray-0">
+            <div class="sm:flex sm:justify-between sm:items-center">
+              <div>
+                <div class="text-lg text-gray-700">
+                <span class="text-gray-900 font-bold">Rs {{mains.price}}</span> per Plate</div>
+                <input type="checkbox" name="items[]" class="form-check-input" value="{{mains.pk}}">
+                <label class="text-gray-600 font-bold order-label">Order</label>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+         {% endfor %}
+         <a name="deserts"></a>
+         <div class="text-order">-- Deserts --</div>
+            {% for deser in derserts%}
+ <div class="flex items-center food-box justify-center">
+    <div class="max-w-md md:max-w-2xl px-2 SIZE">
+      <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
+        
+        <img class="bg-cover bg-bottom h-56 md:h-auto md:w-56 order-img" src="{{deser.image.url}}" >
+        <div>
+          <div class="p-4 md:p-5">
+            <p class="font-bold text-xl md:text-2xl">{{deser.name}}</p>
+            <p class="text-gray-700 md:text-lg">{{deser.description}}</p>
+          </div>
+          <div class="p-4 md:p-5 bg-gray-0">
+            <div class="sm:flex sm:justify-between sm:items-center">
+              <div>
+                <div class="text-lg text-gray-700">
+                <span class="text-gray-900 font-bold">Rs {{deser.price}}</span> per Plate</div>
+                <input type="checkbox" name="items[]" class="form-check-input" value="{{deser.pk}}">
+                <label class="text-gray-600 font-bold order-label">Order</label>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+            {% endfor %}
+            <a name="drinks"></a>
+            <div class="text-order">-- Drinks --</div>
+            {% for dri in drinks%}
+ <div class="flex items-center food-box justify-center">
+    <div class="max-w-md md:max-w-2xl px-2 SIZE">
+      <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
+        
+        <img class="bg-cover bg-bottom h-56 md:h-auto md:w-56 order-img" src="{{dri.image.url}}" >
+        <div>
+          <div class="p-4 md:p-5">
+            <p class="font-bold text-xl md:text-2xl">{{dri.name}}</p>
+            <p class="text-gray-700 md:text-lg">{{dri.description}}</p>
+          </div>
+          <div class="p-4 md:p-5 bg-gray-0">
+            <div class="sm:flex sm:justify-between sm:items-center">
+              <div>
+                <div class="text-lg text-gray-700">
+                <span class="text-gray-900 font-bold">Rs {{dri.price}}</span> per Plate</div>
+                <input type="checkbox" name="items[]" class="form-check-input" value="{{dri.pk}}">
+                <label class="text-gray-600 font-bold order-label">Order</label>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+            {% endfor %}<br><hr /><br><a name="pay"></a>
+            <div class="user_form ">
+            <div class="row">
+          <div class="row col-md-6 col-sm-12">
+      <div class="col-25">
+        <label for="name">Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="name" name="name" placeholder="Your name..">
+      </div>
+    </div>
+    <div class="row col-md-6 col-sm-12">
+      <div class="col-25">
+        <label for="email">Email</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="email" name="email" placeholder="Your email..">
+      </div>
+    </div>
+    </div>
+    
+    <div class="row ">
+      <div class="col-25">
+        <label for="street">Street</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="street" name="street" placeholder="Your Street Adress..">
+      </div>
+    </div>
+
+    <div class="row">
+    <div class="row col-md-4 col-sm-12">
+      <div class="col-25">
+        <label for="city">City</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="city" name="city" placeholder="Your City..">
+      </div>
+    </div>
+    <div class="row col-md-4 col-sm-12">
+      <div class="col-25">
+        <label for="state">State</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="state" name="state" placeholder="Your State..">
+      </div>
+    </div>
+    
+    <div class="row col-md-4 col-sm-12">
+      <div class="col-25">
+        <label for="zip">Zip Code</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="zip" name="zip" placeholder="Your Zip Code..">
+      </div>
+    </div>
+    </div>
+   
+    </div>
+        <hr /><br>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Submit Order
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to place the order
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+        <button type="submit" class="btn btn-dark">Order Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+       <!-- <a href="{% url 'order' %}" class="btn-btn-dark mt-5 place-order-btn">Place Order</a>-->
+
+
+    </form>
+</div>
+</section>
+<script>
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
+{% endblock content %}

@@ -1,0 +1,157 @@
+@media (max-width: 1000px){
+    nav{
+      padding: 0 40px 0 50px;
+    }
+  }
+  .Bill
+    {
+      width: 90%;
+    }
+  .user_form
+  {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  @media (max-width: 920px) {
+      .overlay p
+      {
+          font-size: 22px;
+      }
+    nav
+    {
+        background-color: #1b1b1b;
+    }
+    nav .menu-btn i{
+      display: block;
+    }
+    #click:checked ~ .menu-btn i:before{
+      content: "\f00d";
+    }
+    nav ul{
+      position: fixed;
+      top: 80px;
+      left: -100%;
+      background: #111;
+      height: 100vh;
+      width: 100%;
+      text-align: center;
+      display: block;
+      transition: all 0.3s ease-in-out;
+    }
+    #click:checked ~ ul{
+      left: 0;
+    }
+    nav ul li{
+      width: 100%;
+      margin: 40px 0;
+    }
+    nav ul li a{
+      width: 100%;
+      margin-left: -100%;
+      display: block;
+      font-size: 20px;
+      transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    #click:checked ~ ul li a{
+      margin-left: 0px;
+    }
+    nav ul li a.active,
+    nav ul li a:hover{
+      background: none;
+      color: cyan;
+    }
+  }
+  @media only screen and (max-width: 766px)
+  {
+    .SIZE
+    {
+      width: 60%;
+    }
+  }
+@media only screen and (max-width: 600px){
+  .user_form
+{
+  margin-left: 0;
+  margin-right: 0;
+}
+    .overlay h1{
+        font-size: 65px;
+    }
+    .overlay p
+    {
+        font-size: 18px;
+    }
+    .SIZE
+    {
+      width: 75%;
+    }
+    .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+    .order-title
+    {
+      font-size: 35px;
+    }
+    .text-order
+    {
+      font-size: 25px;
+    }
+    .content
+    {
+      display: none;
+    }
+    .warning
+    {
+      position: absolute;
+      top:50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      display: inline-flex;
+      text-align: center;
+    }
+    .exit
+    {
+      color: rgb(53, 53, 53);
+      opacity: 1;
+      z-index: 20;
+    }
+}
+@media only screen and (max-width: 575px){
+  .Bill
+  {
+    width: 100%;
+  }
+  .row .first
+  {
+    transform: translateY(23px);
+  }
+  .side-nav
+  {
+    display: none;
+  }
+  .paymentlink .tip
+  {
+    display: block;
+  }
+}
+@media only screen and (max-width: 400px){
+    .overlay h1{
+        font-size: 50px;
+    }
+    .order-btn
+    {
+    padding: 6px 20px;
+    border:2px white solid;
+    font-size: 18px;
+    }
+    .SIZE
+    {
+      width: 100%;
+    }
+    .order-btn-main
+    {
+      font-size: 25px;
+      text-align: center;
+    }
+}
