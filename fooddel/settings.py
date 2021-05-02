@@ -24,9 +24,9 @@ static_dir=os.path.join(BASE_DIR,'static')
 SECRET_KEY = '5(fh7x57h*p)r+-@87bf4ywyk&@o#%#lqtw$5)*mmew7@mryx('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['zaykedaar.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1','zaykedaar.herokuapp.com']
 
 
 # Application definition
